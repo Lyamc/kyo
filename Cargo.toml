@@ -1,0 +1,17 @@
+[package]
+name = "kyo"
+version = "0.1.0"
+edition = "2021"
+description = "Web controller for Onkyo/Pioneer AV receivers over eISCP"
+license = "MIT"
+
+[dependencies]
+axum = { version = "0.8", default-features = false, features = ["http1", "json", "tokio", "ws"] }
+tokio = { version = "1", features = ["rt", "macros", "net", "time", "sync", "io-util", "signal"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
